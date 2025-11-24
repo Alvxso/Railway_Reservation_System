@@ -129,13 +129,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="InputValidation.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Passenger.cpp" />
+    <ClCompile Include="Ticket.cpp" />
+    <ClCompile Include="Train.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Admin.h" />
+    <ClInclude Include="DataManager.h" />
     <ClInclude Include="InputValidation.h" />
     <ClInclude Include="Passenger.h" />
+    <ClInclude Include="Ticket.h" />
+    <ClInclude Include="Train.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -10,6 +10,7 @@ void Passenger::showMenu() {
 	std::cout << "1. Wyszukaj pociag i zarezerwuj bilet" << std::endl;
 	std::cout << "2. Moje rezerwacje" << std::endl;
 	std::cout << "3. Wyloguj" << std::endl;
+	std::cout << "Wybierz opcje: " << std::endl;
 }
 
 void Passenger::bookTicket() {
