@@ -44,9 +44,6 @@
     <ClInclude Include="InputValidation.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="Passenger.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
@@ -62,5 +59,19 @@
     <ClInclude Include="DataManager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tickets.yaml">
+      <Filter>Database</Filter>
+    </None>
+    <None Include="trains.yaml">
+      <Filter>Database</Filter>
+    </None>
+    <None Include="users.yaml">
+      <Filter>Database</Filter>
+    </None>
   </ItemGroup>
 </Project>

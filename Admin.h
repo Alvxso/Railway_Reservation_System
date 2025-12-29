@@ -1,5 +1,11 @@
 #pragma once
 #include "User.h"
+#include "Train.h"
+#include "Ticket.h"
+#include <vector>
+#include <memory>
+#include <string>
+
 class Admin : public User
 {
 public:
@@ -8,8 +14,9 @@ public:
 	void showMenu() override;
 	std::string getType() const override;
 
-	void addTrain();
-	void removeTrain();
-	void generateReport();
-};
+	void addTrain(std::vector<Train>& trains);
 
+	void removeTrain(std::vector<Train>& trains, std::vector<Ticket>& tickets);
+
+	void generateReport(const std::vector<Train>& trains, const std::vector<Ticket>& tickets, const std::vector<std::unique_ptr<User>>& users);
+};

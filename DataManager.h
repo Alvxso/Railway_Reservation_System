@@ -23,10 +23,10 @@ public:
 	void saveUsers(const std::vector < std::unique_ptr<User>>& users);
 	void loadUsers(std::vector<std::unique_ptr<User>>& users);
 
-	void saveTrains(const std::vector < std::unique_ptr<Train>>& train);
-	void loadTrains(std::vector<std::unique_ptr<Train>>& train);
+	void saveTrains(const std::vector<Train>& trains);
+	void loadTrains(std::vector<Train>& trains);
 
-	void saveTickets(const std::vector < std::unique_ptr<Ticket>>& ticket);
-	void loadTickets(std::vector<std::unique_ptr<Ticket>>& ticket);
+	void saveTickets(const std::vector<Ticket>& tickets);
+	void loadTickets(std::vector<Ticket>& tickets);
 };
 

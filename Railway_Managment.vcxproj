@@ -146,6 +146,11 @@
     <ClInclude Include="Train.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="tickets.yaml" />
+    <None Include="trains.yaml" />
+    <None Include="users.yaml" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

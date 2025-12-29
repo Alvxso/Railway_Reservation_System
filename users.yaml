@@ -1,0 +1,10 @@
+---
+type: ADMIN
+id: 1
+login: admin
+password: admin
+---
+type: PASSENGER
+id: 2
+login: krewetka+
+password: rosyjskie techno
