@@ -59,7 +59,7 @@ int Train::getOccupiedSeatsCount() const {
 
 // Wyświetla wizualną mapę miejsc w pociągu
 void Train::displaySeats() const {
-	std::cout << "\n=== MAPA MIEJSC (Pociag ID: " << Fid << "Relacji: " << Forigin << " --> " << Fdestination << " ===" << std::endl;
+	std::cout << "\n=== MAPA MIEJSC (Pociag ID: " << Fid << " Relacji: " << Forigin << " --> " << Fdestination << " ===" << std::endl;
 	std::cout << "Legenda: [ NR ] = Wolne, [ X ] = Zajete\n" << std::endl;
 
 	// Wyświetl wszystkie miejsca w formacie 4 w wierszu
