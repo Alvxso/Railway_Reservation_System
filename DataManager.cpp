@@ -1,11 +1,27 @@
+/**
+ * @file DataManager.cpp
+ * @brief Implementacja klasy DataManager - obsługa trwałości danych w plikach YAML
+ */
+
 #include "DataManager.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <algorithm>
 
+/**
+ * @brief Konstruktor DataManager
+ */
 DataManager::DataManager(){}
 
+/**
+ * @brief Usuwa białe znaki (spacje, tabulatory, nowe linie) z początku i końca tekstu
+ * 
+ * Pomocnicza funkcja używana przy parsowaniu plików YAML
+ * 
+ * @param str Tekst do obróbki
+ * @return Tekst bez białych znaków na końcach
+ */
 std::string DataManager::trim(const std::string& str) {
 	size_t first = str.find_first_not_of(" \t\r\n");
 	if (std::string::npos == first) return str;
@@ -13,6 +29,18 @@ std::string DataManager::trim(const std::string& str) {
 	return str.substr(first, (last - first + 1));
 }
 
+/**
+ * @brief Zapisuje wszystkich użytkowników do pliku YAML
+ * 
+ * Format YAML dla każdego użytkownika:
+ * ---
+ * type: ADMIN/PASSENGER
+ * id: [numer]
+ * login: [login]
+ * password: [hasło]
+ * 
+ * @param users Wektor użytkowników do zapisania
+ */
 void DataManager::saveUsers(const std::vector<std::unique_ptr<User>>& users) {
 	std::ofstream file(FusersFile);
 	if (!file.is_open()) {
@@ -20,6 +48,7 @@ void DataManager::saveUsers(const std::vector<std::unique_ptr<User>>& users) {
 		return;
 	}
 
+	// Zapisz każdego użytkownika w formacie YAML
 	for (const auto& user : users) {
 		file << "---\n";
 		file << "type: " << user->getType() << "\n";
@@ -31,6 +60,14 @@ void DataManager::saveUsers(const std::vector<std::unique_ptr<User>>& users) {
 	std::cout << "Zapisano uzytkownikow do " << FusersFile << std::endl;
 }
 
+/**
+ * @brief Wczytuje użytkowników z pliku YAML
+ * 
+ * Parsuje plik YAML i tworzy obiekty Admin lub Passenger w zależności od typu.
+ * Jeśli plik nie istnieje, zwraca pusty wektor (pierwsze uruchomienie)
+ * 
+ * @param users Wektor, do którego zostaną wczytani użytkownicy
+ */
 void DataManager::loadUsers(std::vector<std::unique_ptr<User>>& users) {
 	std::ifstream file(FusersFile);
 	if (!file.is_open()) {
@@ -42,9 +79,11 @@ void DataManager::loadUsers(std::vector<std::unique_ptr<User>>& users) {
 	std::string type, login, password;
 	int id = 0;
 
+	// Parsowanie pliku YAML linia po linii
 	while (std::getline(file, line)) {
 		line = trim(line);
 		if (line == "---") {
+			// Separator - jeśli mamy zebrane dane, utwórz użytkownika
 			if (!login.empty()) {
 				if (type == "ADMIN") {
 					users.push_back(std::make_unique<Admin>(login, password, id));
@@ -57,6 +96,7 @@ void DataManager::loadUsers(std::vector<std::unique_ptr<User>>& users) {
 			continue; 
 		}
 
+		// Parsowanie pary klucz:wartość
 		size_t colonPos = line.find(":");
 		if (colonPos != std::string::npos) {
 			std::string key = trim(line.substr(0, colonPos));
@@ -69,6 +109,7 @@ void DataManager::loadUsers(std::vector<std::unique_ptr<User>>& users) {
 		}
 	}
 
+	// Utwórz ostatniego użytkownika jeśli dane są kompletne
 	if (!login.empty()) {
 		if (type == "ADMIN") users.push_back(std::make_unique<Admin>(login, password, id));
 		else if (type == "PASSENGER") users.push_back(std::make_unique<Passenger>(login, password, id));
@@ -78,6 +119,20 @@ void DataManager::loadUsers(std::vector<std::unique_ptr<User>>& users) {
 	std::cout << "Wczytano " << users.size() << " uzytkownikow." << std::endl;
 }
 
+/**
+ * @brief Zapisuje wszystkie pociągi do pliku YAML
+ * 
+ * Format YAML dla każdego pociągu:
+ * ---
+ * id: [numer]
+ * origin: [stacja początkowa]
+ * destination: [stacja końcowa]
+ * date: [data w formacie RRRR-MM-DD]
+ * capacity: [liczba miejsc]
+ * occupied: [lista numerów zajętych miejsc oddzielonych przecinkami]
+ * 
+ * @param trains Wektor pociągów do zapisania
+ */
 void DataManager::saveTrains(const std::vector<Train>& trains) {
 	std::ofstream file(FtrainsFile);
 	if (!file.is_open()) {
@@ -85,6 +140,7 @@ void DataManager::saveTrains(const std::vector<Train>& trains) {
 		return;
 	}
 
+	// Zapisz każdy pociąg w formacie YAML
 	for (const auto& train : trains) {
 		file << "---\n";
 		file << "id: " << train.getID() << "\n";
@@ -93,6 +149,7 @@ void DataManager::saveTrains(const std::vector<Train>& trains) {
 		file << "date: " << train.getDate() << "\n";
 		file << "capacity: " << train.getCapacity() << "\n";
 
+		// Zapisz listę zajętych miejsc jako liczby oddzielone przecinkami
 		file << "occupied: ";
 
 		bool first = true;
@@ -110,6 +167,14 @@ void DataManager::saveTrains(const std::vector<Train>& trains) {
 	std::cout << "Zapisano pociagi do " << FtrainsFile << std::endl;
 }
 
+/**
+ * @brief Wczytuje pociągi z pliku YAML
+ * 
+ * Parsuje plik YAML i odtwarza obiekty Train wraz z ich stanem zajętości miejsc.
+ * Jeśli plik nie istnieje, zwraca pusty wektor
+ * 
+ * @param trains Wektor, do którego zostaną wczytane pociągi
+ */
 void DataManager::loadTrains(std::vector<Train>& trains) {
 	std::ifstream file(FtrainsFile);
 	if (!file.is_open()) {
@@ -122,12 +187,15 @@ void DataManager::loadTrains(std::vector<Train>& trains) {
 	std::string origin, destination, date, occupiedStr;
 
 
+	// Parsowanie pliku YAML linia po linii
 	while (std::getline(file, line)) {
 		line = trim(line);
 		if (line == "---") {
+			// Separator - jeśli mamy zebrane dane, utwórz pociąg
 			if (capacity > 0) {
 				Train t(id, origin, destination, date, capacity);
 
+				// Parsuj listę zajętych miejsc i zarezerwuj je
 				if (!occupiedStr.empty()) {
 					std::stringstream ss(occupiedStr);
 					std::string segment;
@@ -140,11 +208,13 @@ void DataManager::loadTrains(std::vector<Train>& trains) {
 				}
 				trains.push_back(t);
 
+				// Reset zmiennych dla następnego pociągu
 				id = 0; capacity = 0; origin = ""; destination = ""; date = ""; occupiedStr = "";
 			}
 			continue;
 		}
 
+		// Parsowanie pary klucz:wartość
 		size_t colonPos = line.find(":");
 		if (colonPos != std::string::npos) {
 			std::string key = trim(line.substr(0, colonPos));
@@ -158,6 +228,8 @@ void DataManager::loadTrains(std::vector<Train>& trains) {
 			else if (key == "occupied") occupiedStr = value;
 		}
 	}
+	
+	// Utwórz ostatni pociąg jeśli dane są kompletne
 	if (capacity > 0) {
 		Train t(id, origin, destination, date, capacity);
 		if (!occupiedStr.empty()) {
@@ -174,12 +246,26 @@ void DataManager::loadTrains(std::vector<Train>& trains) {
 
 }
 
+/**
+ * @brief Zapisuje wszystkie bilety do pliku YAML
+ * 
+ * Format YAML dla każdego biletu:
+ * ---
+ * id: [numer biletu]
+ * trainId: [ID pociągu]
+ * passenger: [login pasażera]
+ * seat: [numer miejsca]
+ * price: [cena]
+ * 
+ * @param tickets Wektor biletów do zapisania
+ */
 void DataManager::saveTickets(const std::vector<Ticket>& tickets) {
 	std::ofstream file(FticketsFile);
 	if (!file.is_open()) {
 		std::cerr << "Blad: Nie mozna otworzyc pliku " << FticketsFile << "do zapisu" << std::endl;
 	}
 
+	// Zapisz każdy bilet w formacie YAML
 	for (const auto& ticket : tickets) {
 		file << "---\n";
 		file << "id: " << ticket.getTicketId() << "\n";
@@ -192,6 +278,14 @@ void DataManager::saveTickets(const std::vector<Ticket>& tickets) {
 	std::cout << "Zapisano bilety do " << FticketsFile << std::endl;
 }
 
+/**
+ * @brief Wczytuje bilety z pliku YAML
+ * 
+ * Parsuje plik YAML i tworzy obiekty Ticket.
+ * Jeśli plik nie istnieje, zwraca pusty wektor
+ * 
+ * @param tickets Wektor, do którego zostaną wczytane bilety
+ */
 void DataManager::loadTickets(std::vector<Ticket>& tickets) {
 	std::ifstream file(FticketsFile);
 	if (!file.is_open()) {
@@ -204,18 +298,22 @@ void DataManager::loadTickets(std::vector<Ticket>& tickets) {
 	double price = 0.0;
 	std::string passengerLogin;
 
+	// Parsowanie pliku YAML linia po linii
 	while (std::getline(file, line)) {
 		line = trim(line);
 		if (line == "---") {
+			// Separator - jeśli mamy zebrane dane, utwórz bilet
 			if (id > 0 && !passengerLogin.empty()) {
 				Ticket t(id, trainId, passengerLogin, seat, price);
 				tickets.push_back(t);
 
+				// Reset zmiennych dla następnego biletu
 				id = 0; trainId = 0; seat = 0; price = 0.0; passengerLogin = "";
 			}
 			continue;
 		}
 
+		// Parsowanie pary klucz:wartość
 		auto colonPos = line.find(":");
 		if (colonPos != std::string::npos) {
 			std::string key = trim(line.substr(0, colonPos));
@@ -233,6 +331,7 @@ void DataManager::loadTickets(std::vector<Ticket>& tickets) {
 		}
 	}
 
+	// Utwórz ostatni bilet jeśli dane są kompletne
 	if (id > 0 && !passengerLogin.empty()) {
 		Ticket t(id, trainId, passengerLogin, seat, price);
 		tickets.push_back(t);
