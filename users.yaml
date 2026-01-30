@@ -8,3 +8,13 @@ type: PASSENGER
 id: 2
 login: krewetka+
 password: rosyjskie techno
+---
+type: PASSENGER
+id: 3
+login: test
+password: test
+---
+type: PASSENGER
+id: 4
+login: test2
+password: test2

@@ -1,5 +1,6 @@
 #include "Ticket.h"
 #include <sstream>
+#include <iomanip>
 
 Ticket::Ticket(int id, int tID, std::string login, int seat, double price) : 
 	FticketId(id), trainId(tID), passengerLogin(login), seatNumber(seat), Fprice(price) {}
@@ -10,10 +11,16 @@ std::string Ticket::getPassengerLogin() const { return passengerLogin; }
 int Ticket::getSeatNumber() const { return seatNumber; }
 double Ticket::getPrice() const { return Fprice; }
 
+void Ticket::setSeatNumber(int newSeat) {
+	seatNumber = newSeat;
+}
+
 std::string Ticket::toString() const {
 
 	std::stringstream text;
-	text << "Bilet #" << FticketId << " | Pociag ID: " << trainId << " | Miejsce " << seatNumber << " | Pasazer: " << passengerLogin;
+	text << std::fixed << std::setprecision(2);
+
+	text << "Bilet #" << FticketId << " | Pociag ID: " << trainId << " | Miejsce " << seatNumber << " | Cena: " << Fprice << " PLN" << " | Pasazer: " << passengerLogin;
 
 	return text.str();
 }

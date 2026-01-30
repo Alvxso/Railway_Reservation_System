@@ -76,6 +76,16 @@ void passengerSession(Passenger* user, std::vector<Train>& trains, std::vector<T
             user->listMyTickets(tickets);
             break;
         case 3:
+            user->cancelBooking(trains, tickets);
+            dm.saveTrains(trains); 
+            dm.saveTickets(tickets); 
+            break;
+        case 4:
+            user->modifyBooking(trains, tickets);
+            dm.saveTrains(trains);
+            dm.saveTickets(tickets);
+            break;
+        case 5:
             sessionActive = false;
             std::cout << "Wylogowano.\n";
             break;

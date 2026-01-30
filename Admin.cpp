@@ -92,9 +92,14 @@ void Admin::removeTrain(std::vector<Train>& trains, std::vector<Ticket>& tickets
 }
 
 void Admin::generateReport(const std::vector<Train>& trains, const std::vector<Ticket>& tickets, const std::vector<std::unique_ptr<User>>& users) {
+	double totalRevenue = 0.0;
+	for (const auto& t : tickets) {
+		totalRevenue += t.getPrice();
+	}
 	std::cout << "\n================ RAPORT SYSTEMOWY ================\n";
 	std::cout << "Liczba uzytkownikow: " << users.size() << "\n";
 	std::cout << "Liczba pociagow: " << trains.size() << "\n";
 	std::cout << "Liczba sprzedanych biletow: " << tickets.size() << "\n";
+	std::cout << "Calkowity przychod z biletow: " << std::fixed << std::setprecision(2) << totalRevenue << " PLN\n";
 	std::cout << "==================================================\n";
 }

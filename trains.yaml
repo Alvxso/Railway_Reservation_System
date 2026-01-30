@@ -4,7 +4,7 @@ origin: Warszawa
 destination: Krakow
 date: 2026-01-05
 capacity: 100
-occupied: 
+occupied: 2,4
 ---
 id: 2
 origin: Krakow
@@ -25,7 +25,7 @@ origin: Gdansk
 destination: Warszawa
 date: 2026-01-12
 capacity: 100
-occupied: 
+occupied: 1
 ---
 id: 5
 origin: Wroclaw
@@ -150,5 +150,26 @@ id: 22
 origin: Wroclaw
 destination: Gdansk
 date: 2026-03-18
+capacity: 100
+occupied: 
+---
+id: 123
+origin: Chrzanow
+destination: Krakow
+date: 2003-10-14
+capacity: 20
+occupied: 
+---
+id: 456
+origin: 1
+destination: 1
+date: 1
+capacity: 1
+occupied: 
+---
+id: 412356
+origin: 312
+destination: 123
+date: 123
 capacity: 100
 occupied: 

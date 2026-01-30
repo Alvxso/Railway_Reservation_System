@@ -15,4 +15,7 @@ public:
 
 	void bookTicket(std::vector<Train>& trains, std::vector<Ticket>& tickets);
 	void listMyTickets(const std::vector<Ticket>& tickets) const;
+
+	void cancelBooking(std::vector<Train>& trains, std::vector<Ticket>& tickets);
+	void modifyBooking(std::vector<Train>& trains, std::vector<Ticket>& tickets);
 };

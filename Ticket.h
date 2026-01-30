@@ -9,7 +9,7 @@ private:
 	std::string passengerLogin;
 	int seatNumber;
 	double Fprice;
-	
+
 public:
 	Ticket(int id, int tID, std::string login, int seat, double price);
 
@@ -19,6 +19,7 @@ public:
 	int getSeatNumber() const;
 	double getPrice() const;
 
+	void setSeatNumber(int newSeat);
+
 	std::string toString() const;
 };
-
