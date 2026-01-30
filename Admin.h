@@ -1,3 +1,12 @@
+/**
+ * Klasa Admin - Administrator systemu
+ * 
+ * Umożliwia:
+ * - Dodawanie nowych pociągów do systemu
+ * - Usuwanie pociągów z systemu
+ * - Generowanie raportów o stanie systemu (pociągi, bilety, użytkownicy)
+ */
+
 #pragma once
 #include "User.h"
 #include "Train.h"

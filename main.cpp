@@ -1,3 +1,13 @@
+/**
+ * System Rezerwacji Kolejowej - Główny plik programu
+ * 
+ * Program umożliwia:
+ * - Rejestrację i logowanie użytkowników (pasażerowie i administratorzy)
+ * - Rezerwację biletów przez pasażerów
+ * - Zarządzanie pociągami przez administratorów
+ * - Zapisywanie i wczytywanie danych z plików YAML
+ */
+
 #include <iostream>
 #include <vector>
 #include <memory>

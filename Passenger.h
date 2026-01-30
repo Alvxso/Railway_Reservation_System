@@ -1,3 +1,12 @@
+/**
+ * Klasa Passenger - Pasażer w systemie rezerwacji
+ * 
+ * Umożliwia:
+ * - Przeglądanie dostępnych pociągów
+ * - Rezerwację miejsc w pociągach
+ * - Przeglądanie swoich biletów
+ */
+
 #pragma once
 #include "User.h"
 #include "Train.h"

@@ -1,3 +1,14 @@
+/**
+ * Klasa Ticket - Reprezentuje bilet w systemie
+ * 
+ * Przechowuje informacje o:
+ * - Numerze biletu
+ * - Pociągu, na który został zakupiony
+ * - Pasażerze, który kupił bilet
+ * - Numerze zarezerwowanego miejsca
+ * - Cenie biletu
+ */
+
 #pragma once
 #include <string>
 

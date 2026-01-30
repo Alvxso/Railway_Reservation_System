@@ -1,3 +1,13 @@
+/**
+ * Klasa Train - Reprezentuje pociąg w systemie
+ * 
+ * Przechowuje informacje o:
+ * - Trasie pociągu (stacja początkowa i końcowa)
+ * - Dacie i godzinie odjazdu
+ * - Liczbie miejsc i ich dostępności
+ * - Rezerwacjach miejsc
+ */
+
 #pragma once
 #include <string>
 #include <vector>

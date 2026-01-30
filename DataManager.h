@@ -1,3 +1,12 @@
+/**
+ * Klasa DataManager - Zarządzanie zapisem i odczytem danych
+ * 
+ * Odpowiada za:
+ * - Zapisywanie danych do plików YAML (użytkownicy, pociągi, bilety)
+ * - Wczytywanie danych z plików YAML przy starcie programu
+ * - Zapewnienie trwałości danych między uruchomieniami programu
+ */
+
 #pragma once
 #include <vector>
 #include <memory>

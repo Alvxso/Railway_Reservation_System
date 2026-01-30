@@ -1,3 +1,10 @@
+/**
+ * Klasa User - Bazowa klasa dla wszystkich użytkowników systemu
+ * 
+ * Przechowuje podstawowe dane użytkownika (login, hasło, ID)
+ * i definiuje wspólny interfejs dla administratorów i pasażerów.
+ */
+
 #pragma once
 
 #include <string>
