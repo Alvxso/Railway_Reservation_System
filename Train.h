@@ -3,7 +3,7 @@
  * 
  * Przechowuje informacje o:
  * - Trasie pociągu (stacja początkowa i końcowa)
- * - Dacie i godzinie odjazdu
+ * - Dacie odjazdu
  * - Liczbie miejsc i ich dostępności
  * - Rezerwacjach miejsc
  */
