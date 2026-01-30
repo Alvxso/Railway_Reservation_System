@@ -100,7 +100,7 @@ int Train::getOccupiedSeatsCount() const {
  * - Zajęte miejsca: [ X ]
  */
 void Train::displaySeats() const {
-	std::cout << "\n=== MAPA MIEJSC (Pociag ID: " << Fid << "Relacji: " << Forigin << " --> " << Fdestination << " ===" << std::endl;
+	std::cout << "\n=== MAPA MIEJSC (Pociag ID: " << Fid << " Relacji: " << Forigin << " --> " << Fdestination << " ===" << std::endl;
 	std::cout << "Legenda: [ NR ] = Wolne, [ X ] = Zajete\n" << std::endl;
 
 	// Wyświetlanie miejsc w układzie 4 na rząd

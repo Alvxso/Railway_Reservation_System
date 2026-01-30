@@ -262,7 +262,7 @@ void DataManager::loadTrains(std::vector<Train>& trains) {
 void DataManager::saveTickets(const std::vector<Ticket>& tickets) {
 	std::ofstream file(FticketsFile);
 	if (!file.is_open()) {
-		std::cerr << "Blad: Nie mozna otworzyc pliku " << FticketsFile << "do zapisu" << std::endl;
+		std::cerr << "Blad: Nie mozna otworzyc pliku " << FticketsFile << " do zapisu" << std::endl;
 	}
 
 	// Zapisz każdy bilet w formacie YAML
