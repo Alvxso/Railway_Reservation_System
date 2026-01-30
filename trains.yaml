@@ -1,0 +1,154 @@
+---
+id: 1
+origin: Warszawa
+destination: Krakow
+date: 2026-01-05
+capacity: 100
+occupied: 
+---
+id: 2
+origin: Krakow
+destination: Warszawa
+date: 2026-01-06
+capacity: 100
+occupied: 
+---
+id: 3
+origin: Warszawa
+destination: Gdansk
+date: 2026-01-10
+capacity: 100
+occupied: 
+---
+id: 4
+origin: Gdansk
+destination: Warszawa
+date: 2026-01-12
+capacity: 100
+occupied: 
+---
+id: 5
+origin: Wroclaw
+destination: Poznan
+date: 2026-01-15
+capacity: 100
+occupied: 
+---
+id: 6
+origin: Poznan
+destination: Wroclaw
+date: 2026-01-16
+capacity: 100
+occupied: 
+---
+id: 7
+origin: Warszawa
+destination: Krakow
+date: 2026-02-01
+capacity: 100
+occupied: 
+---
+id: 8
+origin: Krakow
+destination: Gdansk
+date: 2026-02-05
+capacity: 100
+occupied: 
+---
+id: 9
+origin: Gdansk
+destination: Krakow
+date: 2026-02-07
+capacity: 100
+occupied: 77
+---
+id: 10
+origin: Katowice
+destination: Warszawa
+date: 2026-02-10
+capacity: 100
+occupied: 
+---
+id: 11
+origin: Warszawa
+destination: Katowice
+date: 2026-02-12
+capacity: 100
+occupied: 
+---
+id: 12
+origin: Lublin
+destination: Rzeszow
+date: 2026-02-14
+capacity: 100
+occupied: 
+---
+id: 13
+origin: Rzeszow
+destination: Krakow
+date: 2026-02-15
+capacity: 100
+occupied: 
+---
+id: 14
+origin: Krakow
+destination: Warszawa
+date: 2026-02-20
+capacity: 100
+occupied: 
+---
+id: 15
+origin: Szczecin
+destination: Poznan
+date: 2026-03-01
+capacity: 100
+occupied: 
+---
+id: 16
+origin: Poznan
+destination: Szczecin
+date: 2026-03-03
+capacity: 100
+occupied: 
+---
+id: 17
+origin: Wroclaw
+destination: Warszawa
+date: 2026-03-05
+capacity: 100
+occupied: 
+---
+id: 18
+origin: Warszawa
+destination: Wroclaw
+date: 2026-03-08
+capacity: 100
+occupied: 
+---
+id: 19
+origin: Lodz
+destination: Warszawa
+date: 2026-03-10
+capacity: 100
+occupied: 
+---
+id: 20
+origin: Warszawa
+destination: Lodz
+date: 2026-03-10
+capacity: 100
+occupied: 
+---
+id: 21
+origin: Gdansk
+destination: Wroclaw
+date: 2026-03-15
+capacity: 100
+occupied: 
+---
+id: 22
+origin: Wroclaw
+destination: Gdansk
+date: 2026-03-18
+capacity: 100
+occupied: 
